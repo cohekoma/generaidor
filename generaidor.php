@@ -1,10 +1,9 @@
 #!/usr/bin/env php
 
 <?php
+require_once __DIR__ . '/vendor/autoload.php';
 
-require 'src/Parser/YamlParser.php';
-
-use generaidor\Parser\Yaml\Parser as YamlParser;
+use Cohekoma\Generaidor\Parser\Yaml\YamlParser as YamlParser;
 const  MARKDOWN_CONTENT_DIR = '/content';
 
 $allContentFiles = glob(__DIR__ . MARKDOWN_CONTENT_DIR . '/*.md');
@@ -17,4 +16,5 @@ preg_match($metaDataRegEx, $samplePostContent, $matches);
 $metaData = explode("\n", trim($matches[1]));
 var_dump($metaData);
 
-print((new YamlParser())->parse());
+$sample = new YamlParser();
+$sample->parse();
