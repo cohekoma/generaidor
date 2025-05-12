@@ -1,0 +1,16 @@
+{
+    "name": "cohekoma/generaidor",
+    "description": "A static site generator (ssg)",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Cohekoma\\Generaidor\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Cohekoma"
+        }
+    ],
+    "require": {}
+}
