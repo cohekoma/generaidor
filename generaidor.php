@@ -2,6 +2,9 @@
 
 <?php
 
+require 'src/Parser/YamlParser.php';
+
+use generaidor\Parser\Yaml\Parser as YamlParser;
 const  MARKDOWN_CONTENT_DIR = '/content';
 
 $allContentFiles = glob(__DIR__ . MARKDOWN_CONTENT_DIR . '/*.md');
@@ -13,3 +16,5 @@ preg_match($metaDataRegEx, $samplePostContent, $matches);
 
 $metaData = explode("\n", trim($matches[1]));
 var_dump($metaData);
+
+print((new YamlParser())->parse());
