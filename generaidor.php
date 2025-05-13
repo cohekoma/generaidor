@@ -4,9 +4,9 @@
 require_once __DIR__ . '/vendor/autoload.php';
 
 use Cohekoma\Generaidor\Parser\Yaml\YamlParser as YamlParser;
-const  MARKDOWN_CONTENT_DIR = '/content';
+use Cohekoma\Generaidor\Core\Paths as Paths;
 
-$allContentFiles = glob(__DIR__ . MARKDOWN_CONTENT_DIR . '/*.md');
+$allContentFiles = glob(Paths::CONTENT_DIR->getFullPath() . '/*.md');
 $samplePost = $allContentFiles[1];
 $samplePostContent = file_get_contents($samplePost);
 
