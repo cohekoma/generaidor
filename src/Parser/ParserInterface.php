@@ -6,5 +6,5 @@ interface ParserInterface
     /*
      * Parse the content into acceptable type
      */
-    function parse() : void;
+    function parse() : array|string;
 }
