@@ -1,0 +1,1 @@
+<!-- Where the default body will be generated -->
