@@ -3,7 +3,12 @@
 namespace Cohekoma\Generaidor\Services;
 
 /**
- * Return a sitemap based on conditions.
+ * SitemapService is a service that does one main job: return a sitemap.
  */
 class SitemapService {
+
+    public function generate() : array
+    {
+        return [];
+    }
 }
