@@ -3,7 +3,7 @@
 <?php
 require_once __DIR__ . '/vendor/autoload.php';
 
-use Cohekoma\Generaidor\Parser\Yaml\YamlParser as YamlParser;
+use Cohekoma\Generaidor\Services\SiteBuilderService as SiteBuilder;
 
-$sample = new YamlParser();
-var_dump($sample->parse());
+$siteBuilder = new SiteBuilder();
+$siteBuilder->build();
