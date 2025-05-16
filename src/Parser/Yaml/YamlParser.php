@@ -8,10 +8,9 @@ use Cohekoma\Generaidor\Core\Paths as Paths;
 class YamlParser extends ParserAbstraction {
 
     /**
-     * @var string $metaDataRegEx Regex pattern to extract meta data from markdown file
+     * @var string $metaDataRegEx Regex pattern to extract metadata from markdown file
      */
     private string $metaDataRegEx = '/^---([\s\S]*?)---/';
-
     public function parse() : array|string
     {
         $allContentFiles = glob(Paths::CONTENT_DIR->getFullPath() . '/*.md');
