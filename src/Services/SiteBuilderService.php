@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Cohekoma\Generaidor\Services;
 
+use Cohekoma\Generaidor\Services\SitemapService as SitemapService;
+
 /**
  * Core service that is used to build the whole static site.
  */
@@ -16,8 +18,13 @@ class SiteBuilderService {
      */
     public function build() : void
     {
+        echo "Star building the site...";
+
         // Generated Sitemap. Prefer to use SitemapService
-        $pages = [];
+        $sitemapService = new SitemapService();
+        $pages = $sitemapService->generate();
+
+        var_dump($pages);
 
         // Loop through all pages retrieved from sitemap.
         foreach ($pages as $page) {
@@ -25,7 +32,5 @@ class SiteBuilderService {
             // Map the returned content with the layout in template.
             // Output / write the final content as HTML file.
         }
-
-        echo "Star building the site...";
     }
 }
