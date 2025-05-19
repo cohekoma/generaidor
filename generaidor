@@ -5,5 +5,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 use Cohekoma\Generaidor\Services\SiteBuilderService as SiteBuilder;
 
+define('ROOT_PATH', dirname(__FILE__));
+
 $siteBuilder = new SiteBuilder();
 $siteBuilder->build();
