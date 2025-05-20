@@ -22,8 +22,8 @@ class SitemapService {
         // Scan the directory where all posts are stored.
         $contentDir = new \RecursiveDirectoryIterator($contentDirPath, FilesystemIterator::SKIP_DOTS);
         foreach (new \RecursiveIteratorIterator($contentDir) as $filename => $file) {
-            $filePathName = str_replace(ROOT_PATH, "", $filename);
-            var_dump($filePathName);
+            // remove the beginning slash so when exploding, the result will be more accurate (var_dump to check).
+            $filePathName = ltrim(str_replace($contentDirPath, "", $filename), "/");
         }
 
         return $result;
