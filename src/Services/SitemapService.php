@@ -23,9 +23,18 @@ class SitemapService {
         $contentDir = new \RecursiveDirectoryIterator($contentDirPath, FilesystemIterator::SKIP_DOTS);
         foreach (new \RecursiveIteratorIterator($contentDir) as $filename => $file) {
             // remove the beginning slash so when exploding, the result will be more accurate (var_dump to check).
-            $filePathName = ltrim(str_replace($contentDirPath, "", $filename), "/");
+            $filePathName = explode("/", ltrim(str_replace($contentDirPath, "", $filename), "/"));
+
+            if (sizeof($filePathName) == 1) {
+                $result[] = $filePathName[0];
+            } else {
+                var_dump(sizeof($filePathName));
+            }
+
+            var_dump($filePathName);
         }
 
+        var_dump($result);
         return $result;
     }
 }
