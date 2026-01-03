@@ -29,9 +29,8 @@ Below is the explanation of what role each folder plays in this project. It will
 ```
 generaidor
 |   README.md           # Information about project
-|   generaidor.php      # The entry file that can be executed.
-|   src                 # Project source
-|   dist                # The static outcomes
+|   public              # The outcome of the generated static content to serve to the public
+|   src                 # Project source code
 |   templates           # All layout templates
 |   content             # Post content written in markdown
 |   assets              # Static assets such as CSS, JS, images or font
