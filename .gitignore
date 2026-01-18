@@ -3,3 +3,5 @@
 content/*
 __pycache__/
 public/
+.venv
+.DS_Store
