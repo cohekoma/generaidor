@@ -14,8 +14,13 @@ Every project is built with some sort of motivation behind it, as it exists for 
 - Run `go build .`
 - Run the executable binary file `./generaidor`.
 
-
 And that's it!
+
+## Usage
+
+**_*The project is still in development so the process is not completed yet!_**
+
+Put your content in `content` folder, then run the executable file, it shall generates the static resources from the source. The command line interface (CLI) will be provided.
 
 ## Folder Structure
 Below is the explanation of what role each folder plays in this project. It will be updated.
