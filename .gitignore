@@ -1,6 +1,6 @@
 .idea/
 /vendor/
-content/*
+content
 __pycache__/
 public/
 .venv
