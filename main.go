@@ -3,11 +3,21 @@ package main
 import (
 	"fmt"
 	"io/fs"
+	"log"
 	"os"
 	"path/filepath"
 )
 
 func main() {
+
+	err := handleStaticGeneration()
+
+	if err != nil {
+		log.Fatal("Fail to generate static content, please try again.")
+	}
+}
+
+func handleStaticGeneration() error {
 	contentRoot := "content"
 	publicRoot := "public"
 
@@ -17,28 +27,35 @@ func main() {
 		}
 
 		if path != contentRoot {
-			if !dir.IsDir() {
-				// err := os.Mkdir(publicRoot+dir.Name(), 0755)
-				srcFile := dir.Name()
-				srcFileExt := filepath.Ext(srcFile)
-				destFile := srcFile[:len(srcFile)-len(srcFileExt)] + ".html"
+			srcRelativePath, _ := filepath.Rel(contentRoot, path)                                     // -> remove `content` from the original path.
+			destCompletePath := setGeneratedFileExtension(filepath.Join(publicRoot, srcRelativePath)) // -> constructed from relpath above, join the public with the rel path.
+			destDirPath := filepath.Dir(destCompletePath)
 
-				generatedFile, err := os.Create(publicRoot + "/" + destFile)
+			fmt.Println(destCompletePath)
 
-				if err != nil {
-					panic(err)
-				}
+			dirCreationErr := os.MkdirAll(destDirPath, 0755)
 
-				fmt.Println("Generated file: " + generatedFile.Name())
-				// fmt.Println("Making file in: " + publicRoot + dir.Name())
+			if dirCreationErr != nil {
+				log.Fatal("There's been an error while creating directories, please check again.")
 			}
+
 		}
 
-		// fmt.Println(path)
 		return nil
 	})
 
 	if err != nil {
-		panic(err)
+		return err
 	}
+
+	return nil
+}
+
+// Take in a file path (as string). Change the extention fragment in the file path string from .md to .html
+func setGeneratedFileExtension(orgFilePath string) (newFilePath string) {
+	originalExtension := filepath.Ext(orgFilePath)
+	staticExtension := ".html"
+
+	newFilePath = orgFilePath[:len(orgFilePath)-len(originalExtension)] + staticExtension
+	return newFilePath
 }
