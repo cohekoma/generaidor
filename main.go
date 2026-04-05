@@ -21,7 +21,9 @@ func handleStaticGeneration() error {
 	contentRoot := "content"
 	publicRoot := "public"
 
-	err := filepath.WalkDir(contentRoot, func(path string, dir fs.DirEntry, err error) error {
+	truncateStaticDir(publicRoot)
+
+	err := filepath.WalkDir(contentRoot, func(path string, entry fs.DirEntry, err error) error {
 		if err != nil {
 			return err
 		}
@@ -58,4 +60,14 @@ func setGeneratedFileExtension(orgFilePath string) (newFilePath string) {
 
 	newFilePath = orgFilePath[:len(orgFilePath)-len(originalExtension)] + staticExtension
 	return newFilePath
+}
+
+// V1: Remove all child-dir and files inside the static (public) directory by delete the directory itself completely.
+// @TODO: need to find a better way to handle this instead of removing everything then regenerate.
+func truncateStaticDir(desiredDir string) {
+	err := os.RemoveAll(desiredDir)
+
+	if err != nil {
+		log.Fatal("There seems to be an error while truncating the directory. Make sure you're not opening the directory or any file inside it.")
+	}
 }
