@@ -32,10 +32,10 @@ func handleStaticGeneration() error {
 			srcRelativePath, _ := filepath.Rel(contentRoot, path)                                     // -> remove `content` from the original path.
 			destCompletePath := setGeneratedFileExtension(filepath.Join(publicRoot, srcRelativePath)) // -> constructed from relpath above, join the public with the rel path.
 			destDirPath := filepath.Dir(destCompletePath)
-
-			fmt.Println(destCompletePath)
-
 			dirCreationErr := os.MkdirAll(destDirPath, 0755)
+			generatedContent := generateStaticContent(path)
+
+			fmt.Println(generatedContent)
 
 			if dirCreationErr != nil {
 				log.Fatal("There's been an error while creating directories, please check again.")
@@ -70,4 +70,18 @@ func truncateStaticDir(desiredDir string) {
 	if err != nil {
 		log.Fatal("There seems to be an error while truncating the directory. Make sure you're not opening the directory or any file inside it.")
 	}
+}
+
+// Take in a path to the original Markdown file.
+// Generate the static output content to write into an HTML file.
+func generateStaticContent(srcFilePath string) (outputContent string) {
+	output, _ := os.ReadFile(srcFilePath)
+
+	// @TODO:
+	// Parse the frontmatter to html
+	// Parse the Markdown format content to html
+	// Map to the layout (if there's one)
+	// Ouput the frontmatter and the html content to the html file.
+
+	return string(output)
 }
