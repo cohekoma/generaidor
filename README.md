@@ -22,6 +22,12 @@ And that's it!
 
 Put your content in `content` folder, then run the executable file, it shall generates the static resources from the source. The command line interface (CLI) will be provided.
 
+## Available commands
+**The commands listed below are not yet completed and still in plan mode** 
+- `scaffold`: Generaidor will set the configuration with the default `content` directory to contain Markdown files and `public` for static content output.
+- `config`: Configure the directory to contain Markdown files and the directory to output the static content.
+- `build`: Using the Markdown-formatted content in the `content` directory (if you config other directory, Generaidor will use it) and output the content in `public` directory (or different directory following your configuration).
+
 ## Folder Structure
 Below is the explanation of what role each folder plays in this project. It will be updated.
 ```
