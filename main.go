@@ -1,16 +1,13 @@
 package main
 
-import (
-	"log"
-
-	"github.com/cohekoma/generaidor/gen"
-)
+import "github.com/cohekoma/generaidor/cmd"
 
 func main() {
 
-	err := gen.HandleStaticGeneration()
+	// err := gen.HandleStaticGeneration()
 
-	if err != nil {
-		log.Fatal("Fail to generate static content, please try again.")
-	}
+	// if err != nil {
+	// 	log.Fatal("Fail to generate static content, please try again.")
+	// }
+	cmd.Init()
 }
