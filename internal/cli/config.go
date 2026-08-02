@@ -11,6 +11,7 @@ func initConfigCmd() *flag.FlagSet {
 	return cmd
 }
 
-func runConfigCmd() {
+func runConfigCmd() error {
 	fmt.Println("Configuring...")
+	return nil
 }

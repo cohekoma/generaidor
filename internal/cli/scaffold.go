@@ -11,6 +11,7 @@ func initScaffoldCmd() *flag.FlagSet {
 	return cmd
 }
 
-func runScaffoldCmd() {
+func runScaffoldCmd() error {
 	fmt.Println("Scaffolding...")
+	return nil
 }

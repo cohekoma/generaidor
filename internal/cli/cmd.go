@@ -16,22 +16,26 @@ func Run(args []string) error {
 
 	switch args[0] {
 	case "scaffold":
-		scaffoldCmd.Parse(args[1:])
-		runScaffoldCmd()
+		if err := scaffoldCmd.Parse(args[1:]); err != nil {
+			return err
+		}
+		return runScaffoldCmd()
 	case "config":
-		configCmd.Parse(args[1:])
-		runConfigCmd()
+		if err := configCmd.Parse(args[1:]); err != nil {
+			return err
+		}
+		return runConfigCmd()
 	case "build":
-		buildCmd.Parse(args[1:])
-		runBuildCmd()
+		if err := buildCmd.Parse(args[1:]); err != nil {
+			return err
+		}
+		return runBuildCmd()
 
 	default:
 		fmt.Println("Unknown command. Please refer to usage guide below.")
 		printDefaultUsage()
 		return errors.New("unknown command!")
 	}
-
-	return nil
 }
 
 func printDefaultUsage() {

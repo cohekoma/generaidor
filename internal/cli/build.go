@@ -13,6 +13,7 @@ func initBuildCmd() *flag.FlagSet {
 	return cmd
 }
 
-func runBuildCmd() {
+func runBuildCmd() error {
 	fmt.Println("Building...")
+	return nil
 }
