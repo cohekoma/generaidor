@@ -1,23 +1,24 @@
-package cmd
+package cli
 
 import (
+	"errors"
 	"flag"
 	"fmt"
 	"os"
 )
 
-func Init() {
+func Run(args []string) error {
 	scaffoldCmd := initScaffoldCmd()
 	configCmd := initConfigCmd()
 	buildCmd := initBuildCmd()
 
-	if len(os.Args) < 2 {
+	if len(args) < 2 {
 		fmt.Println("You need to supply at least one command for Generaidor to run. Please refer to usage!")
 		printDefaultUsage()
 		os.Exit(1)
 	}
 
-	switch os.Args[1] {
+	switch args[1] {
 	case "scaffold":
 		scaffoldCmd.Parse(os.Args[2:])
 		runScaffoldCmd()
@@ -31,8 +32,10 @@ func Init() {
 	default:
 		fmt.Println("Unknown command. Please refer to usage guide below.")
 		printDefaultUsage()
-		os.Exit(1)
+		return errors.New("Unknown command!")
 	}
+
+	return nil
 }
 
 func printDefaultUsage() {
