@@ -8,13 +8,7 @@ Every project is built with some sort of motivation behind it, as it exists for 
 
 ## Installation
 
-- Ensure you have Go installed (tested with go1.25.1).
-- Pull the project to your local machine.
-- `cd` into it.
-- Run `go build .`
-- Run the executable binary file `./generaidor`.
-
-And that's it!
+This branch is a Python version of it. Other information will be updated!
 
 ## Usage
 
@@ -22,7 +16,7 @@ And that's it!
 
 Put your content in `content` folder, then run the executable file, it shall generates the static resources from the source. The command line interface (CLI) will be provided.
 
-## Available commands
+## Commands
 **The commands listed below are not yet completed and still in plan mode** 
 - `scaffold`: Generaidor will set the configuration with the default `content` directory to contain Markdown files and `public` for static content output.
 - `config`: Configure the directory to contain Markdown files and the directory to output the static content.
